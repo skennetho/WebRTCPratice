@@ -35,6 +35,7 @@ import org.appspot.apprtc.PeerConnectionClient.DataChannelParameters;
 import org.appspot.apprtc.PeerConnectionClient.PeerConnectionParameters;
 import org.appspot.apprtc.UnhandledExceptionHandler;
 import org.appspot.apprtc.WebSocketRTCClient;
+
 import org.webrtc.Camera1Enumerator;
 import org.webrtc.Camera2Enumerator;
 import org.webrtc.CameraEnumerator;
@@ -262,7 +263,7 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
         pipRenderer.setEnableHardwareScaler(true /* enabled */);
         fullscreenRenderer.setEnableHardwareScaler(false /* enabled */);
         // Start with local feed in fullscreen and swap it to the pip when the call is connected.
-        setSwappedFeeds(true /* isSwappedFeeds */);
+
 
         // Check for mandatory permissions.
         for (String permission : MANDATORY_PERMISSIONS) {
@@ -616,6 +617,8 @@ public class CallActivity extends Activity implements AppRTCClient.SignalingEven
         // Enable statistics callback.
         peerConnectionClient.enableStatsEvents(true, STAT_CALLBACK_PERIOD);
         setSwappedFeeds(false /* isSwappedFeeds */);
+        /**강섭 카메라 생성직후 저장*/
+        peerConnectionClient.switchCamera();
     }
 
     // This method is called when the audio manager reports audio device change,

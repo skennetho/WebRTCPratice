@@ -130,7 +130,7 @@ public class DirectRTCClient implements AppRTCClient, TCPChannelClient.TCPChanne
     } else {
       port = DEFAULT_PORT;
     }
-
+    Log.d("강섭","connectToRoomInternal tcpClient 생성");
     tcpClient = new TCPChannelClient(executor, this, ip, port);
   }
 

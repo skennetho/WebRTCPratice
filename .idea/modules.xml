@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/webRTC.iml" filepath="$PROJECT_DIR$/webRTC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/webRTC-app.iml" filepath="$PROJECT_DIR$/app/webRTC-app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/webrtc/webRTC-webrtc.iml" filepath="$PROJECT_DIR$/webrtc/webRTC-webrtc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/webRTC - coppy-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/webRTC - coppy-app.iml" group="webRTC - coppy/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webrtc/webRTC - coppy-webrtc.iml" filepath="$PROJECT_DIR$/.idea/modules/webrtc/webRTC - coppy-webrtc.iml" group="webRTC - coppy/webrtc" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/webRTC_-_coppy.iml" filepath="$PROJECT_DIR$/.idea/modules/webRTC_-_coppy.iml" group="webRTC_-_coppy" />
       <module fileurl="file://$PROJECT_DIR$/webrtc/webrtc.iml" filepath="$PROJECT_DIR$/webrtc/webrtc.iml" />
     </modules>
   </component>

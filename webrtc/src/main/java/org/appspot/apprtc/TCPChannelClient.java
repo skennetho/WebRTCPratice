@@ -80,6 +80,7 @@ public class TCPChannelClient {
     } else {
       socket = new TCPSocketClient(address, port);
     }
+    Log.d("강섭", address.toString() + " .isAnyLocalAddress :  "+address.isAnyLocalAddress());
 
     socket.start();
   }

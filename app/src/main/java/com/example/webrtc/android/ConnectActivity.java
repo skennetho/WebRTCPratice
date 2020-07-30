@@ -34,7 +34,12 @@ import org.appspot.apprtc.ui.SettingsActivity;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Random;
 
 //import android.support.v4.app.ActivityCompat;
@@ -51,6 +56,7 @@ public class ConnectActivity extends AppCompatActivity {
     private static final int REMOVE_FAVORITE_INDEX = 0;
     private static boolean commandLineRun = false;
 
+    private TextView tvIP;
     private ImageButton addFavoriteButton;
     private EditText roomEditText;
     private ListView roomListView;
@@ -99,6 +105,7 @@ public class ConnectActivity extends AppCompatActivity {
         });
         roomEditText.requestFocus();
 
+        tvIP = findViewById(R.id.tvIP);
         roomListView = findViewById(R.id.room_listview);
         roomListView.setEmptyView(findViewById(android.R.id.empty));
         roomListView.setOnItemClickListener(roomListClickListener);
@@ -641,4 +648,36 @@ public class ConnectActivity extends AppCompatActivity {
             connectToRoom(roomEditText.getText().toString(), false, false, false, 0);
         }
     };
+
+    public void GetIP(View v) throws SocketException {
+        for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+            NetworkInterface intf = en.nextElement();
+
+            //네트워크 중에서 IP가 할당된 넘들에 대해서 뺑뺑이를 한 번 더 돕니다.
+            for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+
+                InetAddress inetAddress = enumIpAddr.nextElement();
+
+                //네트워크에는 항상 Localhost 즉, 루프백(LoopBack)주소가 있으며, 우리가 원하는 것이 아닙니다.
+                //IP는 IPv6와 IPv4가 있습니다.
+                //IPv6의 형태 : fe80::64b9::c8dd:7003
+                //IPv4의 형태 : 123.234.123.123
+                //어떻게 나오는지는 찍어보세요.
+                if(inetAddress.isLoopbackAddress()) {
+                    Log.i("IPAddress", intf.getDisplayName() + "(loopback) | " + inetAddress.getHostAddress());
+                }
+                else
+                {
+                    Log.i("IPAddress", intf.getDisplayName() + " | " + inetAddress.getHostAddress());
+                }
+
+                //루프백이 아니고, IPv4가 맞다면 리턴~~~
+                if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                    tvIP.setText(inetAddress.getHostAddress().toString());
+                }else{
+                    tvIP.setText("can't get IP");
+                }
+            }
+        }
+    }
 }

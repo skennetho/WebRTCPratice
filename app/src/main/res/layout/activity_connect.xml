@@ -44,7 +44,31 @@
             android:contentDescription="@string/add_favorite_description"
             android:background="@android:drawable/ic_input_add" />
     </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="8dp">
+        <TextView
+            android:id="@+id/tvIP"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:text="IP shows here"
+            android:textSize="20dp"
+            android:imeOptions="actionDone"
+            android:inputType="text"/>
 
+        <Button
+            android:id="@+id/btnGetIp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="GetIp"
+            android:onClick="GetIP"
+            />
+    </LinearLayout>
     <TextView
         android:id="@+id/room_listview_description"
         android:layout_width="match_parent"
