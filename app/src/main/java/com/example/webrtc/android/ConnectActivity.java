@@ -35,6 +35,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.net.Inet4Address;
+import java.net.Inet6Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -672,10 +673,15 @@ public class ConnectActivity extends AppCompatActivity {
                 }
 
                 //루프백이 아니고, IPv4가 맞다면 리턴~~~
-                if (!inetAddress.isLoopbackAddress() && inetAddress instanceof Inet4Address) {
+                if (!inetAddress.isLoopbackAddress() && (inetAddress instanceof Inet4Address )) {
                     tvIP.setText(inetAddress.getHostAddress().toString());
+                    return;
                 }else{
-                    tvIP.setText("can't get IP");
+                    if(inetAddress.isLoopbackAddress())
+                        tvIP.setText("can't get : its loopBack");
+                    else
+                        tvIP.setText("can't get IP");
+
                 }
             }
         }

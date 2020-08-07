@@ -1250,6 +1250,7 @@ public class PeerConnectionClient {
       Log.d(TAG, "SignalingState: " + newState);
     }
 
+    /**강섭 핫스팟환겨엥서의 오류*/
     @Override
     public void onIceConnectionChange(final IceConnectionState newState) {
       executor.execute(() -> {
